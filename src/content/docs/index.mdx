@@ -2,8 +2,10 @@
 title: Vesktop
 description: Vesktop is a desktop client for Discord
 template: splash
+editUrl: false
+lastUpdated: false
 hero:
-    tagline: The best way to use Discord!
+    tagline: Vesktop is a customizable and privacy friendly Discord desktop app!
     image:
         file: ../../assets/vesktop.svg
     actions:
@@ -18,19 +20,22 @@ hero:
 
 import { Card, CardGrid } from "@astrojs/starlight/components";
 
-## Next steps
+## Key Features
 
-<CardGrid stagger>
-    <Card title="Update content" icon="pencil">
-        Edit `src/content/docs/index.mdx` to see this page change.
+<CardGrid>
+    <Card title="Customizable" icon="pencil">
+        Vesktop comes with [Vencord](https://vencord.dev/) out of the box, allowing you to customize your Discord
+        experience with many powerful plugins and themes.
     </Card>
-    <Card title="Add new content" icon="add-document">
-        Add Markdown or MDX files to `src/content/docs` to create new pages.
+    <Card title="Privacy friendly" icon="seti:ignored">
+        Vesktop is [open source](https://github.com/Vencord/Vesktop) and does not include any tracking or telemetry.
+        Blocks Discord telemetry out of the box and heavily limits Discord's access to your system.
     </Card>
-    <Card title="Configure your site" icon="setting">
-        Edit your `sidebar` and other config in `astro.config.mjs`.
+    <Card title="Lightweight" icon="rocket">
+        Vesktop is much more lightweight than the official Discord app, possibly leading to better performance
+        (depending on your system).
     </Card>
-    <Card title="Read the docs" icon="open-book">
-        Learn more in [the Starlight Docs](https://starlight.astro.build/).
+    <Card title="Better Linux experience" icon="linux">
+        Vesktop is built with Linux in mind. Allows you to stream with system audio.
     </Card>
 </CardGrid>
