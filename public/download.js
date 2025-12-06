@@ -1,7 +1,8 @@
 (async function() {
     try {
-        const res = await fetch("https://equicord.org/version");
-        const version = (await res.text()).trim();
+        var res = await fetch("https://api.github.com/repos/Equicord/Equibop/releases/latest");
+        var data = await res.json();
+        var version = data.tag_name.replace(/^v/, "");
 
         document.querySelectorAll("a[data-filename]").forEach(function(btn) {
             var template = btn.dataset.filename;
