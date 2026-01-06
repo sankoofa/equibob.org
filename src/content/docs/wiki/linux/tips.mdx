@@ -11,7 +11,7 @@ If you need to customize how Equibop runs, you can pass arguments directly via t
 
 ### **Wayland Support**
 
-Equibop runs as an X11 application by default. You can override this behaviour.
+Equibop runs as an X11 application by default. You can override this behaviour using the following flag:
 
 ```bash
 --wayland
@@ -21,8 +21,14 @@ This is a shortcut flag that forces the application to use the **Ozone Wayland**
 
 * `WaylandWindowDecorations`
 * `VaapiVideoDecodeLinuxGL` (Hardware acceleration)
+
 > **Note:** You can still use the manual string:
 > `--enable-features=UseOzonePlatform --ozone-platform=wayland`
+
+#### **For Flatpak Users**
+
+If you are using the Flatpak version, you can force Wayland by opening [Flatseal](https://flathub.org/en/apps/com.github.tchx84.Flatseal) and denying the `X11 windowing system` permission for Equibop.
+
 ### **Security & Performance**
 
 ```bash
@@ -37,10 +43,17 @@ Disables the Chromium sandbox. This is generally discouraged for security reason
 
 Instructs the graphics engine to ignore integrated graphics and prioritize the discrete (high-performance) GPU.
 
-### **Additional Features**
+### **Middle Click Auto Scroll**
 
-* **Middle Click Auto Scroll:** Run with `--enable-blink-features=MiddleClickAutoscroll`. 
-    * *Note:* This conflicts with the Linux "middle click to paste" behavior. To fix this on X11, use [XMousePasteBlock](https://github.com/milaq/XMousePasteBlock). On Wayland/GNOME, disable it via **Gnome Tweaks**.
+```bash
+--enable-blink-features=MiddleClickAutoscroll
+```
+
+This flag enables the auto-scroll feature when clicking the middle mouse button.
+
+* **Note:** This will conflict with the default Linux "middle click to paste" behavior.
+* **X11:** Install and run [XMousePasteBlock](https://github.com/milaq/XMousePasteBlock).
+* **Wayland/GNOME:** You can disable the primary selection paste in **Gnome Tweaks**.
 
 ---
 
@@ -55,17 +68,22 @@ To enable the tray icon on GNOME, install the [AppIndicator and KStatusNotifierI
 You can make these arguments persistent using two different methods:
 
 ### Method 1: Persistent Configuration File (Recommended)
-The launcher supports reading arguments from a specific config file.
+
+The launcher supports reading arguments from a specific configuration file, which survives updates.
+
 * **File Path:** `${XDG_CONFIG_HOME}/equibop-flags.conf`
-* **Usage:** Lines starting with `#` are ignored. Valid entries are automatically appended to the execution command.
+* **Rules:** Lines starting with `#` are ignored; empty lines are ignored.
+* **Effect:** All valid entries are automatically appended to the execution command.
 
 ### Method 2: Editing the .desktop File
+
 Locate Equibop's `.desktop` file:
+
 ```sh
 locate -ib equibop.desktop
 ```
 
-Usually in `/usr/share/applications/equibop.desktop`. Open it and add your flags to the `Exec` line, before the `%U`:
+Usually found in `/usr/share/applications/equibop.desktop`. Open it with a text editor and add your flags to the `Exec` line, after the binary path and before the `%U`:
 
 ```text
 Exec=/usr/bin/equibop --wayland --force_high_performance_gpu %U
