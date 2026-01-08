@@ -7,7 +7,7 @@ sidebar:
 
 ## Applying custom arguments
 
-Any of the flags listed below can be applied using one of these three methods:
+Most of the flags listed below can be applied using one of these three methods:
 
 1. **Tray icon:** `Right-click on the Equibop tray icon > Launch arguments`.
 2. **Desktop entry:** Edit the `Exec` line in `/usr/share/applications/equibop.desktop`.
@@ -81,6 +81,31 @@ By default this conflicts with the common Linux behavior where middle-click past
 -   If you are running Equibop in X11 (default), install and run [XMousePasteBlock](https://github.com/milaq/XMousePasteBlock).
 -   If you are running Equibop in Wayland, you might be able to disable it in your Desktop settings.
     On GNOME, you can disable it in [Gnome Tweaks](https://wiki.gnome.org/Apps/Tweaks).
+
+## Microphone & Deafen Toggle
+
+```bash
+equibop --toggle-mic
+```
+
+```bash
+equibop --toggle-deafen
+```
+
+Respectivel toggles your microphone/deafen status while the application is already running.
+
+:::caution
+Unlike the flags mentioned previously, these are **action commands**, not configuration flags.
+
+* **Do NOT** add these to your launch arguments.
+* **Do NOT** add these to your `.desktop` file launch arguments.
+* **Do NOT** add these to your `equibop-flags.conf` file.
+:::
+
+**How to use them correctly:**
+
+1. **Terminal:** Run the command manually while Equibop is open to change your status.
+2. **System Shortcuts:** The most effective way to use these is to bind them to a global keyboard shortcut in your Desktop Environment (GNOME, KDE, etc.). This allows you to mute or deafen yourself using a keybind even when the app isn't focused.
 
 ---
 
